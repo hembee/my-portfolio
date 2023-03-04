@@ -12,5 +12,7 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   background-color: #121212;
+  background-image: url(https://images.wallpaperscraft.com/image/single/keyboard_keys_black_and_white_252018_1280x720.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
