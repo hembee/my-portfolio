@@ -1,0 +1,45 @@
+header {
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 10rem;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #f0f0f0;
+  margin-left: 2rem;
+  transition: 0.8s ease-in-out;
+  font-size: 2rem;
+  font-weight: 600;
+  opacity: 0.75;
+}
+
+.active {
+  color: #fafa07 !important;
+  opacity: 1 !important;
+}
+
+
+@media (max-width: 70rem) {
+  .logo {
+    width: 7em;
+  }
+  header {
+    padding: 5px 0.6rem;
+  }
+  .nav a {
+    margin-left: 0.8rem;
+    font-size: medium;
+  }
+}
