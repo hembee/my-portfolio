@@ -3,7 +3,8 @@
   flex-direction: row;
   padding: 150px 70px 100px 10px;
   color: #fff;
-  background-image: url(https://wallpaperaccess.com/full/5651990.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url(https://wallpaperaccess.com/full/5651990.jpg);
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
