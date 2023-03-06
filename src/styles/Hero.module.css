@@ -3,7 +3,7 @@
   flex-direction: row;
   padding: 150px 70px 100px 10px;
   color: #fff;
-  background-image: url(https://images.wallpaperscraft.com/image/single/keyboard_keys_black_and_white_252018_1280x720.jpg);
+  background-image: url(https://wallpaperaccess.com/full/5651990.jpg);
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
@@ -20,7 +20,7 @@
 }
 
 .hero h1 {
-  font-size: 65px;
+  font-size: 3.5em;
   font-weight: 700;
   letter-spacing: 0.8px;
   line-height: 1;
@@ -28,8 +28,8 @@
   display: block;
 }
 
-.wrap{
-    border-right: 0.08em solid #666;
+.wrap {
+  border-right: 0.08em solid #666;
 }
 
 .hero p {
@@ -55,8 +55,12 @@
 }
 
 .heroImg {
-  width: 100%;
+  width: 320px;
+  height: 400px;
+  object-fit: cover;
   animation: updown 3s linear infinite;
+  border-radius: 50%;
+  border: 10px solid #666;
 }
 
 @keyframes updown {
@@ -71,8 +75,54 @@
   }
 }
 
-@media (max-width: 700px){
-  .col2{
+@media (max-width: 900px) {
+  .col2 {
     display: none;
+  }
+  .hero {
+    padding: 50px 10px;
+  }
+
+  .tagline {
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .hero h1 {
+    font-size: 2em;
+  }
+
+  .hero p {
+    color: #b8b8b8;
+    font-size: 13px;
+  }
+
+  .hero button {
+    margin-top: 30px;
+    font-size: 15px;
+  }
+
+  .col1 {
+    padding: 0px;
+    margin-right: 0px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .hero h1 {
+    font-size: 2em;
+  }
+  .col1 {
+    padding: 0px;
+    margin-right: 0px;
+  }
+}
+@media (max-width: 1400px) {
+  .hero h1 {
+    font-size: 2em;
+  }
+  .col1 {
+    padding: 0px;
+    margin-right: 0px;
   }
 }

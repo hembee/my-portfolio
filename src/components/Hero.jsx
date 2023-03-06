@@ -50,7 +50,7 @@ const Hero = () => {
       <div className={styles.col1}>
         <span className={styles.tagline}>Welcome to my Portfolio</span>
         <h1>
-          Hi I'm Tony, a <span className={styles.wrap}>{text}</span>
+          Hi 👋.  I'm Tony, a <span className={styles.wrap}>{text}</span>
         </h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
@@ -63,7 +63,7 @@ const Hero = () => {
         </button>
       </div>
       <div className={styles.col2}>
-          <img className={styles.heroImg} src={pic1} alt="hero" />
+        <img className={styles.heroImg} src={pic1} alt="hero" />
       </div>
     </section>
   );

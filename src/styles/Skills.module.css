@@ -1,0 +1,35 @@
+.skills {
+  padding: 10px 50px;
+  position: relative;
+  background-color: #151515;
+  color: #f0f0f0;
+}
+
+.skills-bx {
+  background-color: #151515;
+  text-align: center;
+  padding: 60px 50px;
+}
+
+.skills-bx p {
+  color: #b8b8b8;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5rem;
+  margin: 14px 0 75px 0;
+}
+
+.skills-bx h2 {
+  font-size: 45px;
+  font-weight: 700;
+}
+
+.skillSlider {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.skillSlider .item img {
+  width: 50%;
+  margin: 0 auto 15px auto;
+}
