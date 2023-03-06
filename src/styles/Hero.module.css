@@ -1,0 +1,78 @@
+.hero {
+  display: flex;
+  flex-direction: row;
+  padding: 150px 70px 100px 10px;
+  color: #fff;
+  background-image: url(https://images.wallpaperscraft.com/image/single/keyboard_keys_black_and_white_252018_1280x720.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+}
+
+.tagline {
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 0px 10px;
+  border: 1px solid rgba(225, 225, 225, 0.5);
+  font-size: 20px;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.hero h1 {
+  font-size: 65px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 1;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.wrap{
+    border-right: 0.08em solid #666;
+}
+
+.hero p {
+  color: #b8b8b8;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  width: 96%;
+}
+
+.hero button {
+  letter-spacing: 0.8px;
+  margin-top: 60px;
+  display: flex;
+  font-size: 20px;
+  font-weight: 700;
+  align-items: center;
+}
+
+.col1 {
+  padding: 0px 100px;
+  margin-right: 50px;
+}
+
+.heroImg {
+  width: 100%;
+  animation: updown 3s linear infinite;
+}
+
+@keyframes updown {
+  0% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+@media (max-width: 700px){
+  .col2{
+    display: none;
+  }
+}

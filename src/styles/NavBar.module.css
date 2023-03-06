@@ -25,11 +25,11 @@ header {
 }
 
 .active {
-  color: #fafa07 !important;
+  color: #666 !important;
 }
 
 
-@media (max-width: 70rem) {
+@media (max-width: 700px) {
   .logo {
     width: 7em;
   }
