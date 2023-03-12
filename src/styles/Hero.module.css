@@ -27,6 +27,9 @@
   line-height: 1;
   margin-bottom: 20px;
   display: block;
+  -webkit-text-fill-color: black; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #fff;
 }
 
 .wrap {
