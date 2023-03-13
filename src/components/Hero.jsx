@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import styles from "../styles/Hero.module.css";
 import { FaArrowCircleRight } from "react-icons/fa";
 import pic1 from "../images/pic1.jpg";
+import MediaModal from "./MediaModal";
 
-const Hero = () => {
+const Hero = ({ openModal, closeModal, modal }) => {
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const toRotate = [
@@ -47,10 +48,11 @@ const Hero = () => {
 
   return (
     <section className={styles.hero}>
+      {modal && <MediaModal closeModal={closeModal} />}
       <div className={styles.col1}>
         <span className={styles.tagline}>Welcome to my Portfolio</span>
         <h1>
-          Hi 👋.  I'm Tony, a <span className={styles.wrap}>{text}</span>
+          Hi 👋. I'm Tony, a <span className={styles.wrap}>{text}</span>
         </h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
@@ -58,7 +60,7 @@ const Hero = () => {
           sint tempora esse earum aspernatur, ratione, quibusdam assumenda
           delectus quis distinctio eligendi autem.
         </p>
-        <button>
+        <button onClick={openModal}>
           Let's connect <i>{FaArrowCircleRight}</i>
         </button>
       </div>
