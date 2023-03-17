@@ -55,10 +55,8 @@ const Hero = ({ openModal, closeModal, modal }) => {
           Hi 👋. I'm Tony, a <span className={styles.wrap}>{text}</span>
         </h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum
-          consequuntur facilis excepturi! Aut, dolorum incidunt. Qui laboriosam
-          sint tempora esse earum aspernatur, ratione, quibusdam assumenda
-          delectus quis distinctio eligendi autem.
+          Experienced in a wide range of programming languages and frameworks,
+          from front-end to back-end.
         </p>
         <button onClick={openModal}>
           Let's connect <i>{FaArrowCircleRight}</i>

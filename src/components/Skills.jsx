@@ -30,9 +30,8 @@ const Skills = () => {
       <div className={styles["skills-bx"]}>
         <h2>Skills</h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim mollitia
-          vero officia labore. Dignissimos tempora accusamus, commodi sunt illo
-          beatae corporis.
+          Constantly learning and expanding my skill set to stay on top of the
+          latest trends and technologies in full stack development.
         </p>
         <Carousel
           responsive={responsive}

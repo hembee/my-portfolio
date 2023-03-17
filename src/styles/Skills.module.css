@@ -10,13 +10,18 @@
 }
 
 .skills-bx {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  align-items: center;
   padding: 60px 50px;
 }
 
 .skills-bx p {
   color: #b8b8b8;
   font-size: 18px;
+  max-width: 600px;
+  text-align: center;
   letter-spacing: 0.8px;
   line-height: 1.5rem;
   margin: 14px 0 75px 0;
@@ -25,9 +30,9 @@
 .skills-bx h2 {
   font-size: 4em;
   font-weight: 700;
-  -webkit-text-fill-color: black; /* Will override color (regardless of order) */
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #fff;
+  /* -webkit-text-fill-color: black; Will override color (regardless of order) */
+  /* -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #fff; */
 }
 
 .skillSlider {

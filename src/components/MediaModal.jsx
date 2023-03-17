@@ -15,7 +15,7 @@ const MediaModal = ({ closeModal }) => {
             ❌
           </button>
           <a className={styles.icon} href="www.google.com">
-            <i className="bi bi-facebook"></i>
+            <i className="bi bi-facebook">{BsFacebook}</i>
           </a>
           <a className={styles.icon} href="www.google.com">
             {BsWhatsapp}
