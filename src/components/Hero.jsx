@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "../styles/Hero.module.css";
+import { TbPlugConnected } from "react-icons/tb";
 import pic1 from "../images/pic1.jpg";
 import MediaModal from "./MediaModal";
 
@@ -58,7 +59,7 @@ const Hero = ({ openModal, closeModal, modal }) => {
           from front-end to back-end.
         </p>
         <button onClick={openModal} className={styles.connectBtn}>
-          Let's connect
+          Let's connect <TbPlugConnected/>
         </button>
       </div>
       <div className={styles.col2}>
