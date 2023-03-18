@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import styles from "../styles/Hero.module.css";
-import { FaArrowCircleRight } from "react-icons/fa";
 import pic1 from "../images/pic1.jpg";
 import MediaModal from "./MediaModal";
 
@@ -58,8 +57,8 @@ const Hero = ({ openModal, closeModal, modal }) => {
           Experienced in a wide range of programming languages and frameworks,
           from front-end to back-end.
         </p>
-        <button onClick={openModal}>
-          Let's connect <i>{FaArrowCircleRight}</i>
+        <button onClick={openModal} className={styles.connectBtn}>
+          Let's connect
         </button>
       </div>
       <div className={styles.col2}>
