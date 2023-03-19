@@ -58,7 +58,46 @@
   color: #0077b5;
 }
 
+.fb::before,
+.whatsapp::before,
+.twitter::before,
+.github::before,
+.linkedin::before {
+  position: absolute;
+  text-align: center;
+  font-size: 0px;
+  bottom: -15px;
+  transition: all 0.5s;
+}
+
+.fb:before {
+  content: "Facebook";
+}
+.whatsapp:before {
+  content: "WhatsApp";
+}
+.twitter:before {
+  content: "Twitter";
+}
+.github:before {
+  content: "Github";
+}
+.linkedin:before {
+  content: "LinkedIn";
+}
+
+.fb:hover:before,
+.whatsapp:hover:before,
+.twitter:hover:before,
+.github:hover:before,
+.linkedin:hover:before {
+  text-align: center;
+  font-size: 10px;
+  color: #fff;
+}
+
 .icon {
+  text-align: center;
   font-size: 50px;
   z-index: 10;
   text-decoration: none;
@@ -66,7 +105,7 @@
 }
 
 .icon:hover {
-  color: #333333;
+  transform: translateY(-35%);
 }
 
 @media (max-width: 700px) {
