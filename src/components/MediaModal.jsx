@@ -7,6 +7,9 @@ import {
   BsFacebook,
 } from "react-icons/bs";
 import { GiCancel } from "react-icons/gi";
+
+const myGithubLink = "https://www.github.com/hembee";
+
 const MediaModal = ({ closeModal }) => {
   return (
     <div className={styles.blur} onClick={closeModal}>
@@ -37,7 +40,9 @@ const MediaModal = ({ closeModal }) => {
           </a>
           <a
             className={`${styles.icon} ${styles.github}`}
-            href="www.github.com/hembee"
+            href={myGithubLink}
+            target="_blank"
+            rel="noreferrer"
           >
             <BsGithub />
           </a>
