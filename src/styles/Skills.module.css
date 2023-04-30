@@ -30,7 +30,12 @@
 .skills-bx h2 {
   font-size: 4em;
   font-weight: 700;
-  /* -webkit-text-fill-color: black; Will override color (regardless of order) */
+  letter-spacing: 0.8px;
+  line-height: 1;
+  margin-bottom: 20px;
+  display: block;
+  /* -webkit-text-fill-color: blac
+  k; Will override color (regardless of order) */
   /* -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: #fff; */
 }

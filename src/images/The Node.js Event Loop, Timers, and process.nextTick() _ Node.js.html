@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick -->
+<html data-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>The Node.js Event Loop, Timers, and process.nextTick() | Node.js</title><meta name="theme-color" content="#333"><link rel="icon" href="https://nodejs.org/static/images/favicons/favicon.png" type="image/png"><meta name="robots" content="index, follow"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Node.js® is a JavaScript runtime built on Chrome&#39;s V8 JavaScript engine."><meta property="og:title" content="The Node.js Event Loop, Timers, and process.nextTick() | Node.js"><meta property="og:site_name" content="Node.js"><meta property="og:description" content="Node.js® is a JavaScript runtime built on Chrome&#39;s V8 JavaScript engine."><meta property="og:image" content="/static/images/logo-hexagon-card.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="224"><meta property="og:image:height" content="256"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@nodejs"><meta name="twitter:title" content="The Node.js Event Loop, Timers, and process.nextTick() | Node.js"><meta name="twitter:image" content="/static/images/logo-hexagon-card.png"><meta name="twitter:image:alt" content="The Node.js Hexagon Logo"><link rel="canonical" href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick"><link rel="alternate" href="https://nodejs.org/en/feed/blog.xml" title="Node.js Blog" type="application/rss+xml"><link rel="alternate" href="https://nodejs.org/en/feed/releases.xml" title="Node.js Blog: Releases" type="application/rss+xml"><link rel="alternate" href="https://nodejs.org/en/feed/vulnerability.xml" title="Node.js Blog: Vulnerability Reports" type="application/rss+xml"><link rel="preload" as="image" href="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/logo.svg"><link rel="preload" as="image" href="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/light-mode.svg"><link rel="preload" as="image" href="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/dark-mode.svg"><link rel="preload" as="image" href="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/language-picker.svg"><meta name="next-head-count" content="27"><link rel="preload" href="https://nodejs.org/_next/static/media/0a598dacd7753a3d-s.p.woff2" as="font" type="font/woff2" crossorigin="anonymous" data-next-font="size-adjust"><link rel="preload" href="https://nodejs.org/_next/static/media/44c0af0225aaf214-s.p.woff2" as="font" type="font/woff2" crossorigin="anonymous" data-next-font="size-adjust"><link rel="preload" href="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/6c5a733a0dea3ba8.css" as="style"><link rel="stylesheet" href="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/6c5a733a0dea3ba8.css" data-n-g=""><noscript data-n-css=""></noscript><script defer="" nomodule="" src="https://nodejs.org/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js"></script><script src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/legacyMain.js.download" defer="" data-nscript="beforeInteractive"></script><script src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/webpack-16ca7aacbf7ee910.js.download" defer=""></script><script src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/framework-75746eeb80cbf23f.js.download" defer=""></script><script src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/main-38be3f05f3ba62e4.js.download" defer=""></script><script src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/_app-0ad7b39eccf99f6c.js.download" defer=""></script><script src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/48863-303c76a7746f7fd7.js.download" defer=""></script><script src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/event-loop-timers-and-nexttick-084c61daf5355417.js.download" defer=""></script><script src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/_buildManifest.js.download" defer=""></script><script src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/_ssgManifest.js.download" defer=""></script><style id="__jsx-1227875106">body{font:400 20px/1.5 '__Source_Sans_Pro_b61d24', '__Source_Sans_Pro_Fallback_b61d24',"Open Sans",Roboto,"San Francisco",Helvetica,Arial,sans-serif}</style><link as="script" rel="prefetch" href="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/en-eb195015308ce53b.js.download"><link as="script" rel="prefetch" href="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/about-d6f043fecfcfb0ea.js.download"><link as="script" rel="prefetch" href="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/download-b1fdd07f3528e542.js.download"><link as="script" rel="prefetch" href="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/docs-740f48736a0bf6cf.js.download"><link as="script" rel="prefetch" href="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/get-involved-7a31715e2f9168aa.js.download"><link as="script" rel="prefetch" href="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/blog-f83f00b6223f960b.js.download"><link as="script" rel="prefetch" href="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/es6-0dbac057ee814d75.js.download"><link as="script" rel="prefetch" href="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/guides-472359da8be5e02f.js.download"><link as="script" rel="prefetch" href="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/dependencies-fb3e578c90b4b87f.js.download"></head><body class="dark"><div id="__next"><header aria-label="Primary"><div class="container"><a class="logo" href="https://nodejs.org/en"><img alt="Node.js" width="111" height="33" decoding="async" data-nimg="1" style="color:transparent" src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/logo.svg"></a><nav aria-label="primary"><ul class="list-divider-pipe"><li class=""><a href="https://nodejs.org/en">Home</a></li><li class=""><a href="https://nodejs.org/en/about">About</a></li><li class=""><a href="https://nodejs.org/en/download">Downloads</a></li><li class="active"><a href="https://nodejs.org/en/docs">Docs</a></li><li class=""><a href="https://nodejs.org/en/get-involved">Get Involved</a></li><li class=""><a href="https://github.com/nodejs/node/blob/HEAD/SECURITY.md#security">Security</a></li><li class=""><a href="https://openjsf.org/certification">Certification</a></li><li class=""><a href="https://nodejs.org/en/blog">News</a></li></ul></nav><div class="switchers"><button class="dark-theme-switcher" type="button" title="Toggle dark/light mode" aria-label="Toggle dark/light mode"><img alt="Dark Theme Switcher" width="28" height="28" decoding="async" data-nimg="1" class="dark-image" style="color:transparent" src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/light-mode.svg"><img alt="Dark Theme Switcher" width="28" height="28" decoding="async" data-nimg="1" class="light-image" style="color:transparent" src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/dark-mode.svg"></button><button class="lang-picker-toggler" type="button" title="Toggle Language" aria-label="Toggle Language" aria-controls="lang-picker" aria-expanded="false"><img alt="Language Switcher" width="25" height="28" decoding="async" data-nimg="1" style="color:transparent" src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/language-picker.svg"></button></div><ul id="lang-picker" class="lang-picker hidden"><li><a data-lang="ar" title="Arabic" href="https://nodejs.org/ar/docs/guides/event-loop-timers-and-nexttick">العربية</a></li><li><a data-lang="ca" title="Catalan" href="https://nodejs.org/ca/docs/guides/event-loop-timers-and-nexttick">Catalan</a></li><li><a data-lang="de" title="German" href="https://nodejs.org/de/docs/guides/event-loop-timers-and-nexttick">Deutsch</a></li><li><a data-lang="en" title="English" href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick">English</a></li><li><a data-lang="es" title="Spanish" href="https://nodejs.org/es/docs/guides/event-loop-timers-and-nexttick">Español</a></li><li><a data-lang="fa" title="Persian" href="https://nodejs.org/fa/docs/guides/event-loop-timers-and-nexttick">زبان فارسی</a></li><li><a data-lang="fr" title="French" href="https://nodejs.org/fr/docs/guides/event-loop-timers-and-nexttick">Français</a></li><li><a data-lang="id" title="Indonesian" href="https://nodejs.org/id/docs/guides/event-loop-timers-and-nexttick">Bahasa Indonesia</a></li><li><a data-lang="it" title="Italian" href="https://nodejs.org/it/docs/guides/event-loop-timers-and-nexttick">Italiano</a></li><li><a data-lang="ja" title="Japanese" href="https://nodejs.org/ja/docs/guides/event-loop-timers-and-nexttick">日本語</a></li><li><a data-lang="ka" title="Georgian" href="https://nodejs.org/ka/docs/guides/event-loop-timers-and-nexttick">ქართული</a></li><li><a data-lang="ko" title="Korean" href="https://nodejs.org/ko/docs/guides/event-loop-timers-and-nexttick">한국어</a></li><li><a data-lang="pt-br" title="Brazilian Portuguese" href="https://nodejs.org/pt-br/docs/guides/event-loop-timers-and-nexttick">Português do Brasil</a></li><li><a data-lang="ro" title="Romanian" href="https://nodejs.org/ro/docs/guides/event-loop-timers-and-nexttick">limba română</a></li><li><a data-lang="ru" title="Russian" href="https://nodejs.org/ru/docs/guides/event-loop-timers-and-nexttick">Русский</a></li><li><a data-lang="tr" title="Turkish" href="https://nodejs.org/tr/docs/guides/event-loop-timers-and-nexttick">Türkçe</a></li><li><a data-lang="uk" title="Ukrainian" href="https://nodejs.org/uk/docs/guides/event-loop-timers-and-nexttick">Українська</a></li><li><a data-lang="zh-cn" title="Simplified Chinese" href="https://nodejs.org/zh-cn/docs/guides/event-loop-timers-and-nexttick">简体中文</a></li><li><a data-lang="zh-tw" title="Traditional Chinese" href="https://nodejs.org/zh-tw/docs/guides/event-loop-timers-and-nexttick">繁體中文</a></li></ul></div></header><main id="main"><div class="container has-side-nav"><nav aria-label="secondary"><ul><li class=""><a href="https://nodejs.org/en/docs">Docs</a></li><li class=""><a href="https://nodejs.org/en/docs/es6">ES6 and beyond</a></li><li class=""><a href="https://nodejs.org/dist/latest-v18.x/docs/api">v18.15.0 API <span class="small color-lightgray">LTS</span></a></li><li class=""><a href="https://nodejs.org/dist/latest-v19.x/docs/api">v19.8.1 API</a></li><li class=""><a href="https://nodejs.org/en/docs/guides">Guides</a></li><li class=""><a href="https://nodejs.org/en/docs/meta/topics/dependencies">Dependencies</a></li></ul></nav><article dir="auto"><h1 id="the-node.js-event-loop,-timers,-and-,[object-object]">The Node.js Event Loop, Timers, and <code>process.nextTick()</code><a id="header-the-node.js-event-loop,-timers,-and-,[object-object]" class="anchor" href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#the-node.js-event-loop,-timers,-and-,[object-object]" aria-labelledby="the-node.js-event-loop,-timers,-and-,[object-object]"></a></h1>
+<h2 id="what-is-the-event-loop">What is the Event Loop?<a id="header-what-is-the-event-loop" class="anchor" href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#what-is-the-event-loop" aria-labelledby="what-is-the-event-loop"></a></h2>
+<p>The event loop is what allows Node.js to perform non-blocking I/O
+operations — despite the fact that JavaScript is single-threaded — by
+offloading operations to the system kernel whenever possible.</p>
+<p>Since most modern kernels are multi-threaded, they can handle multiple
+operations executing in the background. When one of these operations
+completes, the kernel tells Node.js so that the appropriate callback
+may be added to the <strong>poll</strong> queue to eventually be executed. We'll explain
+this in further detail later in this topic.</p>
+<h2 id="event-loop-explained">Event Loop Explained<a id="header-event-loop-explained" class="anchor" href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#event-loop-explained" aria-labelledby="event-loop-explained"></a></h2>
+<p>When Node.js starts, it initializes the event loop, processes the
+provided input script (or drops into the <a href="https://nodejs.org/api/repl.html#repl_repl">REPL</a>, which is not covered in
+this document) which may make async API calls, schedule timers, or call
+<code>process.nextTick()</code>, then begins processing the event loop.</p>
+<p>The following diagram shows a simplified overview of the event loop's
+order of operations.</p>
+<pre><code class="language-text hljs language-plaintext">   ┌───────────────────────────┐
+┌─&gt;│           timers          │
+│  └─────────────┬─────────────┘
+│  ┌─────────────┴─────────────┐
+│  │     pending callbacks     │
+│  └─────────────┬─────────────┘
+│  ┌─────────────┴─────────────┐
+│  │       idle, prepare       │
+│  └─────────────┬─────────────┘      ┌───────────────┐
+│  ┌─────────────┴─────────────┐      │   incoming:   │
+│  │           poll            │&lt;─────┤  connections, │
+│  └─────────────┬─────────────┘      │   data, etc.  │
+│  ┌─────────────┴─────────────┐      └───────────────┘
+│  │           check           │
+│  └─────────────┬─────────────┘
+│  ┌─────────────┴─────────────┐
+└──┤      close callbacks      │
+   └───────────────────────────┘
+</code></pre>
+<div class="highlight-box">
+<p>Each box will be referred to as a "phase" of the event loop.</p>
+</div>
+<p>Each phase has a FIFO queue of callbacks to execute. While each phase is
+special in its own way, generally, when the event loop enters a given
+phase, it will perform any operations specific to that phase, then
+execute callbacks in that phase's queue until the queue has been
+exhausted or the maximum number of callbacks has executed. When the
+queue has been exhausted or the callback limit is reached, the event
+loop will move to the next phase, and so on.</p>
+<p>Since any of these operations may schedule <em>more</em> operations and new
+events processed in the <strong>poll</strong> phase are queued by the kernel, poll
+events can be queued while polling events are being processed. As a
+result, long running callbacks can allow the poll phase to run much
+longer than a timer's threshold. See the <a href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#timers"><strong>timers</strong></a> and
+<a href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#poll"><strong>poll</strong></a> sections for more details.</p>
+<div class="highlight-box">
+<p>There is a slight discrepancy between the Windows and the
+Unix/Linux implementation, but that's not important for this
+demonstration. The most important parts are here. There are actually
+seven or eight steps, but the ones we care about — ones that Node.js
+actually uses - are those above.</p>
+</div>
+<h2 id="phases-overview">Phases Overview<a id="header-phases-overview" class="anchor" href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#phases-overview" aria-labelledby="phases-overview"></a></h2>
+<ul>
+<li><strong>timers</strong>: this phase executes callbacks scheduled by <code>setTimeout()</code>
+and <code>setInterval()</code>.</li>
+<li><strong>pending callbacks</strong>: executes I/O callbacks deferred to the next loop
+iteration.</li>
+<li><strong>idle, prepare</strong>: only used internally.</li>
+<li><strong>poll</strong>: retrieve new I/O events; execute I/O related callbacks (almost
+all with the exception of close callbacks, the ones scheduled by timers,
+and <code>setImmediate()</code>); node will block here when appropriate.</li>
+<li><strong>check</strong>: <code>setImmediate()</code> callbacks are invoked here.</li>
+<li><strong>close callbacks</strong>: some close callbacks, e.g. <code>socket.on('close', ...)</code>.</li>
+</ul>
+<p>Between each run of the event loop, Node.js checks if it is waiting for
+any asynchronous I/O or timers and shuts down cleanly if there are not
+any.</p>
+<h2 id="phases-in-detail">Phases in Detail<a id="header-phases-in-detail" class="anchor" href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#phases-in-detail" aria-labelledby="phases-in-detail"></a></h2>
+<h3 id="timers">timers<a id="header-timers" class="anchor" href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#timers" aria-labelledby="timers"></a></h3>
+<p>A timer specifies the <strong>threshold</strong> <em>after which</em> a provided callback
+<em>may be executed</em> rather than the <strong>exact</strong> time a person <em>wants it to
+be executed</em>. Timers callbacks will run as early as they can be
+scheduled after the specified amount of time has passed; however,
+Operating System scheduling or the running of other callbacks may delay
+them.</p>
+<div class="highlight-box">
+<p>Technically, the <a href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#poll"><strong>poll</strong> phase</a> controls when timers are executed.</p>
+</div>
+<p>For example, say you schedule a timeout to execute after a 100 ms
+threshold, then your script starts asynchronously reading a file which
+takes 95 ms:</p>
+<pre><code class="language-js hljs language-javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">someAsyncOperation</span>(<span class="hljs-params">callback</span>) {
+  <span class="hljs-comment">// Assume this takes 95ms to complete</span>
+  fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">'/path/to/file'</span>, callback);
+}
+
+<span class="hljs-keyword">const</span> timeoutScheduled = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+
+<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-keyword">const</span> delay = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - timeoutScheduled;
+
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">`<span class="hljs-subst">${delay}</span>ms have passed since I was scheduled`</span>);
+}, <span class="hljs-number">100</span>);
+
+<span class="hljs-comment">// do someAsyncOperation which takes 95 ms to complete</span>
+<span class="hljs-title function_">someAsyncOperation</span>(<span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-keyword">const</span> startCallback = <span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>();
+
+  <span class="hljs-comment">// do something that will take 10ms...</span>
+  <span class="hljs-keyword">while</span> (<span class="hljs-title class_">Date</span>.<span class="hljs-title function_">now</span>() - startCallback &lt; <span class="hljs-number">10</span>) {
+    <span class="hljs-comment">// do nothing</span>
+  }
+});
+</code></pre>
+<p>When the event loop enters the <strong>poll</strong> phase, it has an empty queue
+(<code>fs.readFile()</code> has not completed), so it will wait for the number of ms
+remaining until the soonest timer's threshold is reached. While it is
+waiting 95 ms pass, <code>fs.readFile()</code> finishes reading the file and its
+callback which takes 10 ms to complete is added to the <strong>poll</strong> queue and
+executed. When the callback finishes, there are no more callbacks in the
+queue, so the event loop will see that the threshold of the soonest
+timer has been reached then wrap back to the <strong>timers</strong> phase to execute
+the timer's callback. In this example, you will see that the total delay
+between the timer being scheduled and its callback being executed will
+be 105ms.</p>
+<div class="highlight-box">
+<p>To prevent the <strong>poll</strong> phase from starving the event loop, <a href="https://libuv.org/">libuv</a>
+(the C library that implements the Node.js
+event loop and all of the asynchronous behaviors of the platform)
+also has a hard maximum (system dependent) before it stops polling for
+more events.</p>
+</div>
+<h3 id="pending-callbacks">pending callbacks<a id="header-pending-callbacks" class="anchor" href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#pending-callbacks" aria-labelledby="pending-callbacks"></a></h3>
+<p>This phase executes callbacks for some system operations such as types
+of TCP errors. For example if a TCP socket receives <code>ECONNREFUSED</code> when
+attempting to connect, some *nix systems want to wait to report the
+error. This will be queued to execute in the <strong>pending callbacks</strong> phase.</p>
+<h3 id="poll">poll<a id="header-poll" class="anchor" href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#poll" aria-labelledby="poll"></a></h3>
+<p>The <strong>poll</strong> phase has two main functions:</p>
+<ol>
+<li>Calculating how long it should block and poll for I/O, then</li>
+<li>Processing events in the <strong>poll</strong> queue.</li>
+</ol>
+<p>When the event loop enters the <strong>poll</strong> phase <em>and there are no timers
+scheduled</em>, one of two things will happen:</p>
+<ul>
+<li>
+<p><em>If the <strong>poll</strong> queue <strong>is not empty</strong></em>, the event loop will iterate
+through its queue of callbacks executing them synchronously until
+either the queue has been exhausted, or the system-dependent hard limit
+is reached.</p>
+</li>
+<li>
+<p><em>If the <strong>poll</strong> queue <strong>is empty</strong></em>, one of two more things will
+happen:</p>
+<ul>
+<li>
+<p>If scripts have been scheduled by <code>setImmediate()</code>, the event loop
+will end the <strong>poll</strong> phase and continue to the <strong>check</strong> phase to
+execute those scheduled scripts.</p>
+</li>
+<li>
+<p>If scripts <strong>have not</strong> been scheduled by <code>setImmediate()</code>, the
+event loop will wait for callbacks to be added to the queue, then
+execute them immediately.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Once the <strong>poll</strong> queue is empty the event loop will check for timers
+<em>whose time thresholds have been reached</em>. If one or more timers are
+ready, the event loop will wrap back to the <strong>timers</strong> phase to execute
+those timers' callbacks.</p>
+<h3 id="check">check<a id="header-check" class="anchor" href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#check" aria-labelledby="check"></a></h3>
+<p>This phase allows a person to execute callbacks immediately after the
+<strong>poll</strong> phase has completed. If the <strong>poll</strong> phase becomes idle and
+scripts have been queued with <code>setImmediate()</code>, the event loop may
+continue to the <strong>check</strong> phase rather than waiting.</p>
+<p><code>setImmediate()</code> is actually a special timer that runs in a separate
+phase of the event loop. It uses a libuv API that schedules callbacks to
+execute after the <strong>poll</strong> phase has completed.</p>
+<p>Generally, as the code is executed, the event loop will eventually hit
+the <strong>poll</strong> phase where it will wait for an incoming connection, request,
+etc. However, if a callback has been scheduled with <code>setImmediate()</code>
+and the <strong>poll</strong> phase becomes idle, it will end and continue to the
+<strong>check</strong> phase rather than waiting for <strong>poll</strong> events.</p>
+<h3 id="close-callbacks">close callbacks<a id="header-close-callbacks" class="anchor" href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#close-callbacks" aria-labelledby="close-callbacks"></a></h3>
+<p>If a socket or handle is closed abruptly (e.g. <code>socket.destroy()</code>), the
+<code>'close'</code> event will be emitted in this phase. Otherwise it will be
+emitted via <code>process.nextTick()</code>.</p>
+<h2 id="setimmediate-vs-settimeout"><code>setImmediate()</code> vs <code>setTimeout()</code><a id="header-setimmediate-vs-settimeout" class="anchor" href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#setimmediate-vs-settimeout" aria-labelledby="setimmediate-vs-settimeout"></a></h2>
+<p><code>setImmediate()</code> and <code>setTimeout()</code> are similar, but behave in different
+ways depending on when they are called.</p>
+<ul>
+<li><code>setImmediate()</code> is designed to execute a script once the
+current <strong>poll</strong> phase completes.</li>
+<li><code>setTimeout()</code> schedules a script to be run after a minimum threshold
+in ms has elapsed.</li>
+</ul>
+<p>The order in which the timers are executed will vary depending on the
+context in which they are called. If both are called from within the
+main module, then timing will be bound by the performance of the process
+(which can be impacted by other applications running on the machine).</p>
+<p>For example, if we run the following script which is not within an I/O
+cycle (i.e. the main module), the order in which the two timers are
+executed is non-deterministic, as it is bound by the performance of the
+process:</p>
+<pre><code class="language-js hljs language-javascript"><span class="hljs-comment">// timeout_vs_immediate.js</span>
+<span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'timeout'</span>);
+}, <span class="hljs-number">0</span>);
+
+<span class="hljs-title function_">setImmediate</span>(<span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'immediate'</span>);
+});
+</code></pre>
+<pre><code class="language-text hljs language-plaintext">$ node timeout_vs_immediate.js
+timeout
+immediate
+
+$ node timeout_vs_immediate.js
+immediate
+timeout
+</code></pre>
+<p>However, if you move the two calls within an I/O cycle, the immediate
+callback is always executed first:</p>
+<pre><code class="language-js hljs language-javascript"><span class="hljs-comment">// timeout_vs_immediate.js</span>
+<span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+
+fs.<span class="hljs-title function_">readFile</span>(__filename, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'timeout'</span>);
+  }, <span class="hljs-number">0</span>);
+  <span class="hljs-title function_">setImmediate</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'immediate'</span>);
+  });
+});
+</code></pre>
+<pre><code class="language-text hljs language-plaintext">$ node timeout_vs_immediate.js
+immediate
+timeout
+
+$ node timeout_vs_immediate.js
+immediate
+timeout
+</code></pre>
+<p>The main advantage to using <code>setImmediate()</code> over <code>setTimeout()</code> is
+<code>setImmediate()</code> will always be executed before any timers if scheduled
+within an I/O cycle, independently of how many timers are present.</p>
+<h2 id="processnexttick"><code>process.nextTick()</code><a id="header-processnexttick" class="anchor" href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#processnexttick" aria-labelledby="processnexttick"></a></h2>
+<h3 id="understanding-processnexttick">Understanding <code>process.nextTick()</code><a id="header-understanding-processnexttick" class="anchor" href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#understanding-processnexttick" aria-labelledby="understanding-processnexttick"></a></h3>
+<p>You may have noticed that <code>process.nextTick()</code> was not displayed in the
+diagram, even though it's a part of the asynchronous API. This is because
+<code>process.nextTick()</code> is not technically part of the event loop. Instead,
+the <code>nextTickQueue</code> will be processed after the current operation is
+completed, regardless of the current phase of the event loop. Here,
+an <em>operation</em> is defined as a transition from the
+underlying C/C++ handler, and handling the JavaScript that needs to be
+executed.</p>
+<p>Looking back at our diagram, any time you call <code>process.nextTick()</code> in a
+given phase, all callbacks passed to <code>process.nextTick()</code> will be
+resolved before the event loop continues. This can create some bad
+situations because <strong>it allows you to "starve" your I/O by making
+recursive <code>process.nextTick()</code> calls</strong>, which prevents the event loop
+from reaching the <strong>poll</strong> phase.</p>
+<h3 id="why-would-that-be-allowed">Why would that be allowed?<a id="header-why-would-that-be-allowed" class="anchor" href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#why-would-that-be-allowed" aria-labelledby="why-would-that-be-allowed"></a></h3>
+<p>Why would something like this be included in Node.js? Part of it is a
+design philosophy where an API should always be asynchronous even where
+it doesn't have to be. Take this code snippet for example:</p>
+<pre><code class="language-js hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">apiCall</span>(<span class="hljs-params">arg, callback</span>) {
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> arg !== <span class="hljs-string">'string'</span>)
+    <span class="hljs-keyword">return</span> process.<span class="hljs-title function_">nextTick</span>(
+      callback,
+      <span class="hljs-keyword">new</span> <span class="hljs-title class_">TypeError</span>(<span class="hljs-string">'argument should be string'</span>)
+    );
+}
+</code></pre>
+<p>The snippet does an argument check and if it's not correct, it will pass
+the error to the callback. The API updated fairly recently to allow
+passing arguments to <code>process.nextTick()</code> allowing it to take any
+arguments passed after the callback to be propagated as the arguments to
+the callback so you don't have to nest functions.</p>
+<p>What we're doing is passing an error back to the user but only <em>after</em>
+we have allowed the rest of the user's code to execute. By using
+<code>process.nextTick()</code> we guarantee that <code>apiCall()</code> always runs its
+callback <em>after</em> the rest of the user's code and <em>before</em> the event loop
+is allowed to proceed. To achieve this, the JS call stack is allowed to
+unwind then immediately execute the provided callback which allows a
+person to make recursive calls to <code>process.nextTick()</code> without reaching a
+<code>RangeError: Maximum call stack size exceeded from v8</code>.</p>
+<p>This philosophy can lead to some potentially problematic situations.
+Take this snippet for example:</p>
+<pre><code class="language-js hljs language-javascript"><span class="hljs-keyword">let</span> bar;
+
+<span class="hljs-comment">// this has an asynchronous signature, but calls callback synchronously</span>
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">someAsyncApiCall</span>(<span class="hljs-params">callback</span>) {
+  <span class="hljs-title function_">callback</span>();
+}
+
+<span class="hljs-comment">// the callback is called before `someAsyncApiCall` completes.</span>
+<span class="hljs-title function_">someAsyncApiCall</span>(<span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-comment">// since someAsyncApiCall hasn't completed, bar hasn't been assigned any value</span>
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'bar'</span>, bar); <span class="hljs-comment">// undefined</span>
+});
+
+bar = <span class="hljs-number">1</span>;
+</code></pre>
+<p>The user defines <code>someAsyncApiCall()</code> to have an asynchronous signature,
+but it actually operates synchronously. When it is called, the callback
+provided to <code>someAsyncApiCall()</code> is called in the same phase of the
+event loop because <code>someAsyncApiCall()</code> doesn't actually do anything
+asynchronously. As a result, the callback tries to reference <code>bar</code> even
+though it may not have that variable in scope yet, because the script has not
+been able to run to completion.</p>
+<p>By placing the callback in a <code>process.nextTick()</code>, the script still has the
+ability to run to completion, allowing all the variables, functions,
+etc., to be initialized prior to the callback being called. It also has
+the advantage of not allowing the event loop to continue. It may be
+useful for the user to be alerted to an error before the event loop is
+allowed to continue. Here is the previous example using <code>process.nextTick()</code>:</p>
+<pre><code class="language-js hljs language-javascript"><span class="hljs-keyword">let</span> bar;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">someAsyncApiCall</span>(<span class="hljs-params">callback</span>) {
+  process.<span class="hljs-title function_">nextTick</span>(callback);
+}
+
+<span class="hljs-title function_">someAsyncApiCall</span>(<span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'bar'</span>, bar); <span class="hljs-comment">// 1</span>
+});
+
+bar = <span class="hljs-number">1</span>;
+</code></pre>
+<p>Here's another real world example:</p>
+<pre><code class="language-js hljs language-javascript"><span class="hljs-keyword">const</span> server = net.<span class="hljs-title function_">createServer</span>(<span class="hljs-function">() =&gt;</span> {}).<span class="hljs-title function_">listen</span>(<span class="hljs-number">8080</span>);
+
+server.<span class="hljs-title function_">on</span>(<span class="hljs-string">'listening'</span>, <span class="hljs-function">() =&gt;</span> {});
+</code></pre>
+<p>When only a port is passed, the port is bound immediately. So, the
+<code>'listening'</code> callback could be called immediately. The problem is that the
+<code>.on('listening')</code> callback will not have been set by that time.</p>
+<p>To get around this, the <code>'listening'</code> event is queued in a <code>nextTick()</code>
+to allow the script to run to completion. This allows the user to set
+any event handlers they want.</p>
+<h2 id="processnexttick-vs-setimmediate"><code>process.nextTick()</code> vs <code>setImmediate()</code><a id="header-processnexttick-vs-setimmediate" class="anchor" href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#processnexttick-vs-setimmediate" aria-labelledby="processnexttick-vs-setimmediate"></a></h2>
+<p>We have two calls that are similar as far as users are concerned, but
+their names are confusing.</p>
+<ul>
+<li><code>process.nextTick()</code> fires immediately on the same phase</li>
+<li><code>setImmediate()</code> fires on the following iteration or 'tick' of the
+event loop</li>
+</ul>
+<p>In essence, the names should be swapped. <code>process.nextTick()</code> fires more
+immediately than <code>setImmediate()</code>, but this is an artifact of the past
+which is unlikely to change. Making this switch would break a large
+percentage of the packages on npm. Every day more new modules are being
+added, which means every day we wait, more potential breakages occur.
+While they are confusing, the names themselves won't change.</p>
+<div class="highlight-box">
+<p>We recommend developers use <code>setImmediate()</code> in all cases because it's
+easier to reason about.</p>
+</div>
+<h2 id="why-use-processnexttick">Why use <code>process.nextTick()</code>?<a id="header-why-use-processnexttick" class="anchor" href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#why-use-processnexttick" aria-labelledby="why-use-processnexttick"></a></h2>
+<p>There are two main reasons:</p>
+<ol>
+<li>
+<p>Allow users to handle errors, cleanup any then unneeded resources, or
+perhaps try the request again before the event loop continues.</p>
+</li>
+<li>
+<p>At times it's necessary to allow a callback to run after the call
+stack has unwound but before the event loop continues.</p>
+</li>
+</ol>
+<p>One example is to match the user's expectations. Simple example:</p>
+<pre><code class="language-js hljs language-javascript"><span class="hljs-keyword">const</span> server = net.<span class="hljs-title function_">createServer</span>();
+server.<span class="hljs-title function_">on</span>(<span class="hljs-string">'connection'</span>, <span class="hljs-function">(<span class="hljs-params">conn</span>) =&gt;</span> {});
+
+server.<span class="hljs-title function_">listen</span>(<span class="hljs-number">8080</span>);
+server.<span class="hljs-title function_">on</span>(<span class="hljs-string">'listening'</span>, <span class="hljs-function">() =&gt;</span> {});
+</code></pre>
+<p>Say that <code>listen()</code> is run at the beginning of the event loop, but the
+listening callback is placed in a <code>setImmediate()</code>. Unless a
+hostname is passed, binding to the port will happen immediately. For
+the event loop to proceed, it must hit the <strong>poll</strong> phase, which means
+there is a non-zero chance that a connection could have been received
+allowing the connection event to be fired before the listening event.</p>
+<p>Another example is extending an <code>EventEmitter</code> and emitting an
+event from within the constructor:</p>
+<pre><code class="language-js hljs language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-title class_">EventEmitter</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">'events'</span>);
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">MyEmitter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">EventEmitter</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">super</span>();
+    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-string">'event'</span>);
+  }
+}
+
+<span class="hljs-keyword">const</span> myEmitter = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyEmitter</span>();
+myEmitter.<span class="hljs-title function_">on</span>(<span class="hljs-string">'event'</span>, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'an event occurred!'</span>);
+});
+</code></pre>
+<p>You can't emit an event from the constructor immediately
+because the script will not have processed to the point where the user
+assigns a callback to that event. So, within the constructor itself,
+you can use <code>process.nextTick()</code> to set a callback to emit the event
+after the constructor has finished, which provides the expected results:</p>
+<pre><code class="language-js hljs language-javascript"><span class="hljs-keyword">const</span> <span class="hljs-title class_">EventEmitter</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">'events'</span>);
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">MyEmitter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">EventEmitter</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">super</span>();
+
+    <span class="hljs-comment">// use nextTick to emit the event once a handler is assigned</span>
+    process.<span class="hljs-title function_">nextTick</span>(<span class="hljs-function">() =&gt;</span> {
+      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">emit</span>(<span class="hljs-string">'event'</span>);
+    });
+  }
+}
+
+<span class="hljs-keyword">const</span> myEmitter = <span class="hljs-keyword">new</span> <span class="hljs-title class_">MyEmitter</span>();
+myEmitter.<span class="hljs-title function_">on</span>(<span class="hljs-string">'event'</span>, <span class="hljs-function">() =&gt;</span> {
+  <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">'an event occurred!'</span>);
+});
+</code></pre></article></div></main><a href="https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick#" id="scroll-to-top" style="display: none;"><span>↑ <!-- -->Scroll to top</span></a><footer><div class="container"><div class="openjsfoundation-footer"><p>Copyright <a href="https://openjsf.org/">OpenJS Foundation</a> and Node.js contributors. All rights reserved. The<!-- --> <a href="https://openjsf.org/">OpenJS Foundation</a> has registered trademarks and uses trademarks. For a list of trademarks of the<!-- --> <a href="https://openjsf.org/">OpenJS Foundation</a>, please see our<!-- --> <a href="https://trademark-policy.openjsf.org/">Trademark Policy</a> <!-- -->and <a href="https://trademark-list.openjsf.org/">Trademark List</a>. Trademarks and logos not indicated on the<!-- --> <a href="https://trademark-list.openjsf.org/">list of OpenJS Foundation trademarks</a> <!-- -->are trademarks™ or registered® trademarks of their respective holders. Use of them does not imply any affiliation with or endorsement by them.</p><p class="openjsfoundation-footer-links"><a href="https://openjsf.org/">The OpenJS Foundation</a>&nbsp;|&nbsp;<a href="https://terms-of-use.openjsf.org/">Terms of Use</a>&nbsp;|&nbsp;<a href="https://privacy-policy.openjsf.org/">Privacy Policy</a>&nbsp;|&nbsp;<a href="https://bylaws.openjsf.org/">Bylaws</a>&nbsp;|&nbsp;<a href="https://code-of-conduct.openjsf.org/">Code of Conduct</a>&nbsp;|&nbsp;<a href="https://trademark-policy.openjsf.org/">Trademark Policy</a>&nbsp;|&nbsp;<a href="https://trademark-list.openjsf.org/">Trademark List</a>&nbsp;|&nbsp;<a href="https://www.linuxfoundation.org/cookies">Cookie Policy</a></p><div class="openjsfoundation-footer-edit"></div></div></div></footer></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{"i18nData":{"currentLocale":{"code":"en","localName":"English","name":"English","langDir":"ltr","dateFormat":"MM.DD.YYYY","hrefLang":"en-US","enabled":true},"localeMessages":{"components.footer.scrollToTop.button":"Scroll to top","components.header.links.home":"Home","components.header.links.about":"About","components.header.links.download":"Downloads","components.header.links.docs":"Docs","components.header.links.getInvolved":"Get Involved","components.header.links.security":"Security","components.header.links.certification":"Certification","components.header.links.blog":"News","components.navigation.about.links.governance":"Governance","components.navigation.docs.links.es6":"ES6 and beyond","components.navigation.docs.links.apiLts":"{fullLtsNodeVersion} API {spanLts}","components.navigation.docs.links.apiCurrent":"{fullCurrentNodeVersion} API","components.navigation.docs.links.guides":"Guides","components.navigation.docs.links.dependencies":"Dependencies","components.navigation.getInvolved.links.collabSummit":"Collab Summit","components.navigation.getInvolved.links.contribute":"Contribute","components.navigation.getInvolved.links.codeOfConduct":"Code of Conduct","components.downloadList.links.previousReleases":"Previous Releases","components.downloadList.links.packageManager":"Installing Node.js via package manager","components.downloadList.links.shaSums":"Signed SHASUMS for release files","components.downloadList.links.shaSums.howToVerify":" (How to verify)","components.downloadList.links.allDownloads":"All download options","components.downloadList.links.nightlyReleases":"Nightly builds","components.downloadList.links.unofficialBuilds":"Unofficial builds","components.downloadList.links.buildingFromSource":"Building Node.js from source on supported platforms","components.downloadList.links.installingOnLinux":"Installing Node.js via binary archive","components.downloadList.links.installingOnWsl":"Install on Windows Subsystem for Linux (WSL)","components.downloadReleasesTable.changelog":"Changelog","components.downloadReleasesTable.releases":"Releases","components.downloadReleasesTable.docs":"Docs","components.header.buttons.toggleLanguage":"Toggle Language","components.header.buttons.toggleDarkMode":"Toggle dark/light mode","components.pagination.next":"Newer | ","components.pagination.previous":"Older","layouts.blogPost.author.byLine":"{author, select, null {} other {By {author}, }}","layouts.blogIndex.currentYear":"News from {year}"}},"nodeVersionData":[{"node":"v19.8.1","nodeNumeric":"19.8.1","nodeMajor":"v19.x","npm":"9.5.1","isLts":false},{"node":"v18.15.0","nodeNumeric":"18.15.0","nodeMajor":"v18.x","npm":"9.5.0","isLts":true}]},"__N_SSG":true},"page":"/en/docs/guides/event-loop-timers-and-nexttick","query":{},"buildId":"oV76ysiqUymVVctPjNsLG","isFallback":false,"gsp":true,"scriptLoader":[]}</script><a rel="me" href="https://social.lfx.dev/@nodejs"></a><next-route-announcer><p aria-live="assertive" id="__next-route-announcer__" role="alert" style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: absolute; width: 1px; white-space: nowrap; overflow-wrap: normal;"></p></next-route-announcer><script src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/en-eb195015308ce53b.js.download"></script><script src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/docs-740f48736a0bf6cf.js.download"></script><script src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/download-b1fdd07f3528e542.js.download"></script><script src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/about-d6f043fecfcfb0ea.js.download"></script><script src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/blog-f83f00b6223f960b.js.download"></script><script src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/get-involved-7a31715e2f9168aa.js.download"></script><script src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/guides-472359da8be5e02f.js.download"></script><script src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/dependencies-fb3e578c90b4b87f.js.download"></script><script src="./The Node.js Event Loop, Timers, and process.nextTick() _ Node.js_files/es6-0dbac057ee814d75.js.download"></script></body></html>

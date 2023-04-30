@@ -1,0 +1,64 @@
+.projects {
+  padding: 10px 50px;
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+    url(http://hd.wallpaperswide.com/thumbs/tribute_to_steve-t2.jpg);
+  color: #f0f0f0;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  padding: 60px 50px;
+}
+
+.projects h1 {
+  font-size: 4em;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height: 1;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  display: block;
+}
+.projects p {
+  color: #b8b8b8;
+  font-size: 18px;
+  max-width: 600px;
+  text-align: center;
+  letter-spacing: 0.8px;
+  line-height: 1.5rem;
+  margin: 14px 0 75px 0;
+}
+
+.project {
+  width: 100%;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10em;
+  justify-content: center;
+  align-items: center;
+}
+
+.project h2 {
+  font-size: 2em;
+}
+
+@media (max-width: 700px) {
+  .projects {
+    padding: 10px;
+  }
+  .projects h1 {
+    margin-top: 10px;
+    font-size: 2em;
+  }
+
+  .projects p {
+    font-size: 13px;
+    margin: 14px 0 40px 0;
+  }
+}
