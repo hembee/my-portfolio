@@ -1,0 +1,47 @@
+.footer {
+  background-color: inherit;
+  padding: 10px;
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerContent {
+  text-align: left;
+}
+
+.footerContent h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.footerContent p {
+  margin: 5px 0;
+}
+
+.footerLinks a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.footerLinks a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  .footerContent h3 {
+    font-size: 15px;
+    margin: 0;
+  }
+  .footerContent p {
+    font-size: 12px;
+  }
+  .footerLinks a {
+    margin-right: 5px;
+  }
+}

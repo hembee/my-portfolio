@@ -1,53 +1,65 @@
 import styles from "../styles/Projects.module.css";
-
+import pic1 from "../images/skills.jpg"
 const Projects = () => {
   const projects = [
     {
-      title: "Business Startup",
-      description: "Design and Development",
-      imgUrl: "img1",
+      title: "Cash2go",
+      description: "Loan prediction app",
+      imgUrl: pic1,
+      url: "https://google.com",
     },
     {
-      title: "Business Startup",
-      description: "Design and Development",
-      imgUrl: "img1",
+      title: "DrummersVille",
+      description: "Music",
+      imgUrl: pic1,
+      url: "https://google.com",
     },
     {
-      title: "Business Startup",
-      description: "Design and Development",
-      imgUrl: "img1",
+      title: "Portfolio",
+      description: "Personal portfolio",
+      imgUrl: pic1,
+      url: "https://google.com",
     },
     {
-      title: "Business Startup",
-      description: "Design and Development",
-      imgUrl: "img1",
+      title: "Udemy",
+      description: "Udemy clone",
+      imgUrl: pic1,
+      url: "https://google.com",
     },
     {
-      title: "Business Startup",
-      description: "Design and Development",
-      imgUrl: "img1",
+      title: "Airbnb",
+      description: "Airbnb clone",
+      imgUrl: pic1,
+      url: "https://google.com",
     },
     {
-      title: "Business Startup",
-      description: "Design and Development",
-      imgUrl: "img1",
+      title: "Mealy",
+      description: "A food order app",
+      imgUrl: pic1,
+      url: "https://google.com",
     },
   ];
   return (
-    <section className={styles.projects}>
+    <section className={styles.projects} id="projects">
       <h1>Projects</h1>
-      <p>
+      <p className={styles.projectsp}>
         Constantly learning and expanding my skill set to stay on top of the
         latest trends and technologies in full stack development.
       </p>
       <div className={styles.project}>
         {projects.map((project, index) => {
           return (
-            <div key={index} className={styles.projectCard}>
-              <h2>{project.title}</h2>
-              <p>{project.description}</p>
+            <a
+              key={index}
+              className={`${styles.projectCard} ${styles.link}`}
+              href={project.url}
+            >
+              <div>
+                <h2>{project.title}</h2>
+                <p>{project.description}</p>
+              </div>
               <img src={project.imgUrl} alt="image1" />
-            </div>
+            </a>
           );
         })}
       </div>

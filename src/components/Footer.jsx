@@ -1,4 +1,5 @@
-import styles from "../styles/MediaModal.module.css";
+import React from "react";
+import styles from "../styles/Footer.module.css";
 import {
   BsWhatsapp,
   BsTwitter,
@@ -6,23 +7,19 @@ import {
   BsLinkedin,
   BsFacebook,
 } from "react-icons/bs";
-import { GiCancel } from "react-icons/gi";
 
 const myGithubLink = "https://www.github.com/hembee";
 
-const MediaModal = ({ closeModal }) => {
+
+const Footer = () => {
   return (
-    <div className={styles.blur} onClick={closeModal}>
-      <div
-        className={styles.modal}
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-      >
-        <button className={styles.close} onClick={closeModal}>
-          <GiCancel />
-        </button>
-        <div className={styles.icons}>
+    <footer className={styles.footer}>
+      <div className={styles.container}>
+        <div className={styles.footerContent}>
+          <h3>Asagba Mubarak Anthony</h3>
+          <p>Full Stack Web Developer</p>
+        </div>
+        <div className={styles.footerLinks}>
           <a
             className={`${styles.icon} ${styles.fb}`}
             href="www.google.com"
@@ -65,8 +62,8 @@ const MediaModal = ({ closeModal }) => {
           </a>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
-export default MediaModal;
+export default Footer;
