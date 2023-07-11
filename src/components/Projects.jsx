@@ -1,5 +1,7 @@
 import styles from "../styles/Projects.module.css";
-import pic1 from "../images/skills.jpg"
+import pic1 from "../images/portfolio.png"
+import pic2 from "../images/udemy.png"
+import pic3 from "../images/airbnb.png"
 const Projects = () => {
   const projects = [
     {
@@ -23,13 +25,13 @@ const Projects = () => {
     {
       title: "Udemy",
       description: "Udemy clone",
-      imgUrl: pic1,
-      url: "https://google.com",
+      imgUrl: pic2,
+      url: "https://hembee.github.io/udemy-landing-page",
     },
     {
       title: "Airbnb",
       description: "Airbnb clone",
-      imgUrl: pic1,
+      imgUrl: pic3,
       url: "https://google.com",
     },
     {
@@ -53,6 +55,8 @@ const Projects = () => {
               key={index}
               className={`${styles.projectCard} ${styles.link}`}
               href={project.url}
+              rel="noreferrer noopener"
+              target= "_blank"
             >
               <div>
                 <h2>{project.title}</h2>
