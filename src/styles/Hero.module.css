@@ -101,16 +101,13 @@
   }
 
   .tagline {
+    margin-top: 10px;
     font-weight: 600;
     font-size: 15px;
   }
 
   .hero h1 {
     font-size: 1.2em;
-  }
-
-  .wrap {
-  font-size: 1em
   }
 
   .hero p {
