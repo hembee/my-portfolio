@@ -98,7 +98,7 @@
   .hero {
     padding: 50px 0px;
     position:fixed;
-    z-index: -4;
+    z-index: -1;
   }
 
   .tagline {
