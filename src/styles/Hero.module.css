@@ -110,6 +110,10 @@
     font-size: 1.8em;
   }
 
+  .wrap {
+  font-size: 1.5em
+  }
+
   .hero p {
     color: #b8b8b8;
     font-size: 13px;
