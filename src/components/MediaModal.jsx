@@ -11,7 +11,7 @@ import { GiCancel } from "react-icons/gi";
 const myGithubLink = "https://www.github.com/hembee";
 const myFacebookLink = "https://www.facebook.com/hem.bee1999";
 const myTwitterLink = "https://twitter.com/humble_hembee";
-const myWhatsappLink = "https://wa.me/message.RHIX7CCQLGLVP1";
+const myWhatsappLink = "https://wa.me/message/RHIX7CCQLGLVP1";
 const myLinkedinLink = "https://www.linkedin.com/in/asagba-mubarak-anthony-67102a278";
 
 const MediaModal = ({ closeModal }) => {
