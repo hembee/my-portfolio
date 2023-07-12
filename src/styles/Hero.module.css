@@ -91,11 +91,14 @@
 }
 
 @media (max-width: 900px) {
+  
   .col2 {
     display: none;
   }
   .hero {
-    padding: 50px 10px;
+    padding: 50px 0px;
+    position:fixed;
+    z-index: -4;
   }
 
   .tagline {
