@@ -9,6 +9,11 @@ import {
 } from "react-icons/bs";
 
 const myGithubLink = "https://www.github.com/hembee";
+const myFacebookLink = "https://www.facebook.com/hem.bee1999";
+const myTwitterLink = "https://twitter.com/humble_hembee";
+const myWhatsappLink = "https://wa.me/message.RHIX7CCQLGLVP1";
+const myLinkedinLink =
+  "https://www.linkedin.com/in/asagba-mubarak-anthony-67102a278";
 
 
 const Footer = () => {
@@ -22,7 +27,7 @@ const Footer = () => {
         <div className={styles.footerLinks}>
           <a
             className={`${styles.icon} ${styles.fb}`}
-            href="www.google.com"
+            href={myFacebookLink}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -30,7 +35,7 @@ const Footer = () => {
           </a>
           <a
             className={`${styles.icon} ${styles.whatsapp}`}
-            href="www.google.com"
+            href={myWhatsappLink}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -38,7 +43,7 @@ const Footer = () => {
           </a>
           <a
             className={`${styles.icon} ${styles.twitter}`}
-            href="www.google.com"
+            href={myTwitterLink}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -54,7 +59,7 @@ const Footer = () => {
           </a>
           <a
             className={`${styles.icon} ${styles.linkedin}`}
-            href="www.google.com"
+            href={myLinkedinLink}
             target="_blank"
             rel="noopener noreferrer"
           >
