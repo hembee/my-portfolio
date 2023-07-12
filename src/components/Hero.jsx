@@ -52,7 +52,7 @@ const Hero = ({ openModal, closeModal, modal }) => {
       <div className={styles.col1}>
         <span className={styles.tagline}>Welcome to my Portfolio</span>
         <h1>
-          Hi 👋. I'm Tony, a <span className={styles.wrap}>{text}</span>
+          Hi 👋. I'm Tony, a <br />  <span className={styles.wrap}>{text}</span>
         </h1>
         <p>
           Experienced in a wide range of programming languages and frameworks,
