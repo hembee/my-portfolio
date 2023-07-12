@@ -107,7 +107,7 @@
   }
 
   .hero h1 {
-    font-size: 1.5em;
+    font-size: 1.8em;
   }
 
   .hero p {
@@ -128,7 +128,7 @@
 
 @media (max-width: 1200px) {
   .hero h1 {
-    font-size: 1.5em;
+    font-size: 1.8em;
   }
   .col1 {
     padding: 0px;
@@ -137,7 +137,7 @@
 }
 @media (max-width: 1400px) {
   .hero h1 {
-    font-size: 1.5em;
+    font-size: 1.8em;
   }
   .col1 {
     padding: 0px;
