@@ -54,6 +54,7 @@
   .skills {
     padding: 0;
     margin-top: 300px;
+    z-index: 2;
   }
   .skills-bx {
     padding: 10px;
