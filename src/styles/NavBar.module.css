@@ -35,6 +35,7 @@ header {
   }
   header {
     padding: 5px 0.6rem;
+    position: fixed;
   }
   .nav a {
     margin-left: 0.8rem;
