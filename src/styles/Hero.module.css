@@ -131,12 +131,4 @@
     margin-right: 0px;
   }
 }
-@media (max-width: 1400px) {
-  .hero h1 {
-    font-size: 1.7em;
-  }
-  .col1 {
-    padding: 0px;
-    margin-right: 0px;
-  }
-}
+
