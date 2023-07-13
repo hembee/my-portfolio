@@ -4,6 +4,7 @@ import pic2 from "../images/udemy.png"
 import pic3 from "../images/airbnb.png"
 import pic4 from "../images/athletic.png"
 import pic5 from "../images/cash2go.png"
+import pic6 from "../images/drummersville.png"
 const Projects = () => {
   const projects = [
     {
@@ -11,6 +12,12 @@ const Projects = () => {
       description: "Loan prediction app",
       imgUrl: pic5,
       url: "https://cash2go.netlify.app",
+    },
+    {
+      title: "DrummersVille",
+      description: "Music",
+      imgUrl: pic6,
+      url: "https://drummersville-murex.vercel.app/",
     },
     {
       title: "Athletics",
@@ -34,12 +41,6 @@ const Projects = () => {
       title: "Airbnb",
       description: "Airbnb clone",
       imgUrl: pic3,
-      url: "https://google.com",
-    },
-    {
-      title: "Mealy",
-      description: "A food order app",
-      imgUrl: pic1,
       url: "https://google.com",
     },
   ];
