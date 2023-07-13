@@ -8,6 +8,12 @@ import pic6 from "../images/drummersville.png"
 const Projects = () => {
   const projects = [
     {
+      title: "Airbnb",
+      description: "Airbnb clone",
+      imgUrl: pic3,
+      url: "https://air-bnb-pearl.vercel.app/",
+    },
+    {
       title: "Cash2go",
       description: "Loan prediction app",
       imgUrl: pic5,
@@ -36,12 +42,6 @@ const Projects = () => {
       description: "Udemy clone",
       imgUrl: pic2,
       url: "https://hembee.github.io/udemy-landing-page",
-    },
-    {
-      title: "Airbnb",
-      description: "Airbnb clone",
-      imgUrl: pic3,
-      url: "https://google.com",
     },
   ];
   return (
