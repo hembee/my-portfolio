@@ -38,6 +38,7 @@ header {
     width: 100%;
     top: 0;
     z-index: 3;
+    position: fixed;
     background-color: #020202;
   }
   .nav a {
