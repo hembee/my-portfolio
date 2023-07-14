@@ -4,6 +4,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
 }
 
 .logo {
@@ -36,7 +37,6 @@ header {
   header {
     padding: 5px 0.6rem;
     width: 100%;
-    position: fixed;
     top: 0;
     z-index: 3;
     background-color: #020202;
