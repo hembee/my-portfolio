@@ -1,40 +1,45 @@
 import styles from "../styles/NavBar.module.css";
 import Tony from "../images/Tony.png";
+import { Link, animateScroll as scroll } from "react-scroll";
 import { useState } from "react";
 
 const NavBar = () => {
   const [activeLink, setActiveLink] = useState("home");
+
+  const handleLinkClick = (link) => {
+    setActiveLink(link);
+    scroll.scrollTo(link, {
+      duration: 500,
+      offset: -70,
+      smooth: true,
+    });
+  };
+
   return (
     <header className={styles.header}>
       <img className={styles.logo} src={Tony} alt="logo" />
       <nav className={styles.nav}>
-        <a
-          href="#home"
+        <Link
+          to="home"
           className={activeLink === "home" ? styles.active : ""}
-          onClick={() => {
-            setActiveLink("home");
-          }}
+          onClick={() => handleLinkClick("home")}
         >
           Home
-        </a>
-        <a
-          href="#skills"
+        </Link>
+        <Link
+          to="skills"
           className={activeLink === "skills" ? styles.active : ""}
-          onClick={() => {
-            setActiveLink("skills");
-          }}
+          onClick={() => handleLinkClick("skills")}
         >
           Skills
-        </a>
-        <a
-          href="#projects"
+        </Link>
+        <Link
+          to="projects"
           className={activeLink === "projects" ? styles.active : ""}
-          onClick={() => {
-            setActiveLink("projects");
-          }}
+          onClick={() => handleLinkClick("projects")}
         >
           Projects
-        </a>
+        </Link>
       </nav>
     </header>
   );

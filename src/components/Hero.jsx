@@ -8,7 +8,7 @@ const Hero = ({ openModal, closeModal, modal }) => {
   const [loopNum, setLoopNum] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const toRotate = [
-    "Front-end Developer",
+    "Front-end Engineer",
     "Backend Developer",
     "Full-Stack Developer",
   ];
