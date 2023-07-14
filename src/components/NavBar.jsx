@@ -20,21 +20,21 @@ const NavBar = () => {
       <img className={styles.logo} src={Tony} alt="logo" />
       <nav className={styles.nav}>
         <Link
-          to="home"
+          to="#home"
           className={activeLink === "home" ? styles.active : ""}
           onClick={() => handleLinkClick("home")}
         >
           Home
         </Link>
         <Link
-          to="skills"
+          to="#skills"
           className={activeLink === "skills" ? styles.active : ""}
           onClick={() => handleLinkClick("skills")}
         >
           Skills
         </Link>
         <Link
-          to="projects"
+          to="#projects"
           className={activeLink === "projects" ? styles.active : ""}
           onClick={() => handleLinkClick("projects")}
         >
