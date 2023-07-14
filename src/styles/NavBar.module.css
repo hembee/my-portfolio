@@ -4,7 +4,6 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: transparent;
 }
 
 .logo {
@@ -17,7 +16,6 @@ header {
 }
 
 .link {
-  cursor: pointer;
   text-decoration: none;
   color: #f0f0f0;
   margin-left: 2rem;
@@ -30,6 +28,7 @@ header {
   color: #666 !important;
 }
 
+
 @media (max-width: 700px) {
   .logo {
     width: 7em;
@@ -37,9 +36,9 @@ header {
   header {
     padding: 5px 0.6rem;
     width: 100%;
+    position: fixed;
     top: 0;
     z-index: 3;
-    position: fixed;
     background-color: #020202;
   }
   .nav a {
