@@ -4,8 +4,6 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
-  background-color: #020202;
 }
 
 .logo {
@@ -40,6 +38,7 @@ header {
     width: 100%;
     top: 0;
     z-index: 3;
+    background-color: #020202;
   }
   .nav a {
     margin-left: 0.8rem;
