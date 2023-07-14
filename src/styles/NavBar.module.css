@@ -15,7 +15,8 @@ header {
   justify-content: space-evenly;
 }
 
-.nav a {
+.link {
+  cursor: pointer;
   text-decoration: none;
   color: #f0f0f0;
   margin-left: 2rem;
@@ -27,7 +28,6 @@ header {
 .active {
   color: #666 !important;
 }
-
 
 @media (max-width: 700px) {
   .logo {

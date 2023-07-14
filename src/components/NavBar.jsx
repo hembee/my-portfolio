@@ -14,6 +14,7 @@ const NavBar = () => {
           offset={-70}
           duration={500}
           activeClass={styles.active}
+          className={styles.link}
         >
           Home
         </Link>
@@ -24,6 +25,7 @@ const NavBar = () => {
           offset={-70}
           duration={500}
           activeClass={styles.active}
+          className={styles.link}
         >
           Skills
         </Link>
@@ -34,6 +36,7 @@ const NavBar = () => {
           offset={-70}
           duration={500}
           activeClass={styles.active}
+          className={styles.link}
         >
           Projects
         </Link>
