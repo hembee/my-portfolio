@@ -5,6 +5,9 @@ import pic3 from "../images/airbnb.png";
 import pic4 from "../images/athletic.png";
 import pic5 from "../images/cash2go.png";
 import pic6 from "../images/drummersville.png";
+import pic7 from "../images/api1.png";
+import pic8 from "../images/api2.png";
+import pic9 from "../images/api3.png";
 import { Element } from "react-scroll";
 
 const Projects = () => {
@@ -44,6 +47,24 @@ const Projects = () => {
       description: "Udemy clone",
       imgUrl: pic2,
       url: "https://hembee.github.io/udemy-landing-page",
+    },
+    {
+      title: "Cash2go-API",
+      description: "Loan prediction backend",
+      imgUrl: pic7,
+      url: "https://github.com/Cash2go-backend-org/cash2go-backend",
+    },
+    {
+      title: "To-do-API",
+      description: "To-do app backend",
+      imgUrl: pic8,
+      url: "https://github.com/hembee/todo-api",
+    },
+    {
+      title: "Store-API",
+      description: "A store API",
+      imgUrl: pic9,
+      url: "https://github.com/hembee/store-api",
     },
   ];
   return (
