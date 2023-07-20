@@ -12,11 +12,15 @@ const myGithubLink = "https://www.github.com/hembee";
 const myFacebookLink = "https://www.facebook.com/hem.bee1999";
 const myTwitterLink = "https://twitter.com/humble_hembee";
 const myWhatsappLink = "https://wa.me/message/RHIX7CCQLGLVP1";
-const myLinkedinLink = "https://www.linkedin.com/in/asagba-mubarak-anthony-67102a278";
+const myLinkedinLink =
+  "https://www.linkedin.com/in/asagba-mubarak-anthony-67102a278";
 
-const MediaModal = ({ closeModal }) => {
+const MediaModal = ({ closeModal, showModal }) => {
   return (
-    <div className={styles.blur} onClick={closeModal}>
+    <div
+      className={`${styles.blur} ${showModal ? styles["show-modal"] : ""}`}
+      onClick={closeModal}
+    >
       <div
         className={styles.modal}
         onClick={(e) => {

@@ -48,7 +48,7 @@ const Hero = ({ openModal, closeModal, modal }) => {
 
   return (
     <section className={styles.hero} id="home">
-      {modal && <MediaModal closeModal={closeModal} />}
+      {modal && <MediaModal closeModal={closeModal} showModal={openModal} />}
       <div className={styles.col1}>
         <span className={styles.tagline}>Welcome to my Portfolio</span>
         <h1>
