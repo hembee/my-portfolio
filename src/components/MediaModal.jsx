@@ -17,12 +17,9 @@ const myLinkedinLink =
 
 const MediaModal = ({ closeModal, showModal }) => {
   return (
-    <div
-      className={`${styles.blur} ${showModal ? styles["show-modal"] : ""}`}
-      onClick={closeModal}
-    >
+    <div className={styles.blur} onClick={closeModal}>
       <div
-        className={styles.modal}
+        className={`${styles.modal} ${showModal ? styles["show-modal"] : ""}`}
         onClick={(e) => {
           e.stopPropagation();
         }}

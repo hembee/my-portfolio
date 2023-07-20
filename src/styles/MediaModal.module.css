@@ -11,14 +11,6 @@
   justify-content: center;
   align-items: center;
   z-index: 3;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-.blur.show-modal {
-  opacity: 1;
-  visibility: visible;
 }
 
 .modal {
@@ -29,6 +21,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.modal.show-modal {
+  opacity: 1;
+  visibility: visible;
 }
 
 .close {
