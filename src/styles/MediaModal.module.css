@@ -11,7 +11,16 @@
   justify-content: center;
   align-items: center;
   z-index: 3;
+    opacity: 0; 
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
+
+.blur.show-modal {
+  opacity: 1;
+  visibility: visible;
+}
+
 .modal {
   width: 25em;
   height: 15em;
