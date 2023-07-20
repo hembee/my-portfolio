@@ -5,9 +5,9 @@ import pic3 from "../images/airbnb.png";
 import pic4 from "../images/athletic.png";
 import pic5 from "../images/cash2go.png";
 import pic6 from "../images/drummersville.png";
-import pic7 from "../images/api1.png";
+import pic7 from "../images/api1.jpg";
 import pic8 from "../images/api2.png";
-import pic9 from "../images/api3.png";
+import pic9 from "../images/api3.avif";
 import { Element } from "react-scroll";
 
 const Projects = () => {

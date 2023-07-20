@@ -22,6 +22,7 @@ header {
   transition: 0.8s ease-in-out;
   font-size: 2rem;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .active {
