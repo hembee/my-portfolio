@@ -1,10 +1,46 @@
 .footer {
   background-color: inherit;
-  padding: 10px;
+  padding: 20px;
   color: #fff;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.experience {
+  border-right: 1px solid #fff;
+  width: 50vw;
+}
+
+.experience li {
+  width: 30vw;
+  font-size: 12px;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.education {
+  margin-left: 40px;
+}
+
+.education h2 {
+  margin-bottom: 5px;
+}
+
+.education li {
+  font-size: 12px;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.school2 {
+  margin-top: 20px;
+}
+
 .container {
+  margin-top: 35px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,6 +63,7 @@
   color: #fff;
   text-decoration: none;
   margin-right: 10px;
+  font-size: 35px;
 }
 
 .footerLinks a:hover {
@@ -34,6 +71,23 @@
 }
 
 @media (max-width: 700px) {
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+  .experience {
+    border: none;
+    width: 100vw;
+    margin-bottom: 20px;
+  }
+  .education {
+    width: 100vw;
+    margin: 0;
+  }
+  .experience li, .education li {
+    width: 90vw;
+  }
+ 
   .footerContent h3 {
     font-size: 15px;
     margin: 0;
@@ -43,5 +97,6 @@
   }
   .footerLinks a {
     margin-right: 5px;
+    font-size: 20px;
   }
 }

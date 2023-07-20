@@ -55,8 +55,16 @@ const Skills = () => {
             <h5>React</h5>
           </div>
           <div className={styles.item}>
+            <img src={meter2} alt="meter" />
+            <h5>Next</h5>
+          </div>
+          <div className={styles.item}>
             <img src={meter1} alt="meter" />
             <h5>NodeJS</h5>
+          </div>
+          <div className={styles.item}>
+            <img src={meter1} alt="meter" />
+            <h5>Express</h5>
           </div>
           <div className={styles.item}>
             <img src={meter2} alt="meter" />
@@ -65,6 +73,10 @@ const Skills = () => {
           <div className={styles.item}>
             <img src={meter2} alt="meter" />
             <h5>Mongoose</h5>
+          </div>
+          <div className={styles.item}>
+            <img src={meter1} alt="meter" />
+            <h5>Git</h5>
           </div>
         </Carousel>
       </div>
