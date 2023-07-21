@@ -84,10 +84,15 @@
     width: 100vw;
     margin: 0;
   }
-  .experience li, .education li {
+  .experience li,
+  .education li {
     width: 90vw;
   }
- 
+
+  .container {
+    flex-direction: column;
+  }
+
   .footerContent h3 {
     font-size: 15px;
     margin: 0;
