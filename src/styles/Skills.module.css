@@ -1,12 +1,9 @@
 .skills {
   padding: 10px 50px;
   position: relative;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
-    url(https://images.squarespace-cdn.com/content/v1/5c7d59f690f904489a78904b/1565062200621-274FRWN73ADVYG9NRAGH/it-career-skills-series-backend-developer.jpg);
+  background-color: #0000807c;
   color: #f0f0f0;
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: cover;
+  padding-bottom: 50px;
 }
 
 .skills-bx {
