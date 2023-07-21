@@ -113,7 +113,7 @@ const Projects = () => {
                     target="_blank"
                     rel="noreferrer noopener"
                   >
-                    <strong>Website Link</strong>
+                    <strong>Project Link</strong>
                   </a>
                   <a
                     href={project.github}
