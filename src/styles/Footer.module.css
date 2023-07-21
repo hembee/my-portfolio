@@ -91,6 +91,7 @@
 
   .container {
     flex-direction: column;
+    text-align: left;
   }
 
   .footerContent h3 {
