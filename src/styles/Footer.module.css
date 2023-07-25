@@ -91,10 +91,6 @@
 
   .container {
     flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
   }
 
   .footerContent h3 {
@@ -103,9 +99,10 @@
   }
   .footerContent p {
     font-size: 12px;
+    margin: 0;
   }
   .footerLinks a {
-    margin-right: 5px;
+    margin: 0;
     font-size: 25px;
   }
 }
