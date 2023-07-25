@@ -92,6 +92,10 @@
   .container {
     flex-direction: column;
   }
+  
+  .footerContent {
+  text-align: center;
+}
 
   .footerContent h3 {
     font-size: 15px;
@@ -99,10 +103,9 @@
   }
   .footerContent p {
     font-size: 12px;
-    margin: 0;
   }
   .footerLinks a {
-    margin: 0;
+    margin-right: 5px;
     font-size: 25px;
   }
 }
