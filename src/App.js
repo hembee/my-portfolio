@@ -6,6 +6,7 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Footer from "./components/Footer";
 
+
 function App() {
   const [modal, setModal] = useState(false);
   const closeModal = () => {
