@@ -15,7 +15,7 @@ function App() {
     setModal(true);
   };
   return (
-    <div className="Ap">
+    <div className="App">
       <NavBar />
       <Hero modal={modal} openModal={openModal} closeModal={closeModal} />
       <Skills />
