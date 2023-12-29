@@ -8,10 +8,19 @@ import pic6 from "../images/drummersville.png";
 import pic7 from "../images/api1.jpg";
 import pic8 from "../images/api2.png";
 import pic9 from "../images/api3.avif";
+import pic10 from "../images/cravings.jpeg";
 import { Element } from "react-scroll";
 
 const Projects = () => {
   const projects = [
+    {
+      title: "Cravings-meal",
+      description: "A food order app",
+      imgUrl: pic10,
+      url: "https://cravings-meal.vercel.app/",
+      github: "https://github.com/hembee/cravings-meal",
+      tech: "React MongoDB Express Node",
+    },
     {
       title: "Airbnb",
       description: "Airbnb clone",
